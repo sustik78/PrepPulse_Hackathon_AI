@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
   --background: #09090b;
@@ -11,27 +9,44 @@
   /* Zinc 900 */
   --border: #27272a;
   /* Zinc 800 */
-
   --primary: #2563eb;
   /* Blue 600 */
-  --primary-fg: #ffffff;
+}
+
+@theme {
+  --color-zinc-950: #09090b;
+  --color-zinc-900: #18181b;
+  --color-zinc-800: #27272a;
 }
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  background-color: var(--background);
+  /* Modern Engineering Grid Background */
+  background-image:
+    linear-gradient(to right, #1f1f23 1px, transparent 1px),
+    linear-gradient(to bottom, #1f1f23 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-attachment: fixed;
   min-height: 100vh;
   font-family: var(--font-geist-sans), "Inter", sans-serif;
   overflow-x: hidden;
 }
 
-/* Custom Selection */
-::selection {
-  background: var(--primary);
-  color: white;
+/* Vignette Overlay */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, transparent 40%, var(--background) 100%);
+  z-index: -1;
+  pointer-events: none;
 }
 
-/* --- Visible Range Slider --- */
+/* Range Slider */
 input[type=range] {
   -webkit-appearance: none;
   width: 100%;
@@ -53,7 +68,6 @@ input[type=range]::-webkit-slider-thumb {
 
 input[type=range]::-webkit-slider-thumb:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 0 2px var(--primary);
 }
 
 input[type=range]::-webkit-slider-runnable-track {
@@ -61,48 +75,33 @@ input[type=range]::-webkit-slider-runnable-track {
   height: 4px;
   cursor: pointer;
   background: #3f3f46;
-  /* Zinc 700 - Highly Visible Track */
   border-radius: 2px;
 }
 
-/* --- High Contrast Components --- */
+/* Custom Classes */
 .clean-card {
-  background: var(--card-bg);
+  background-color: var(--card-bg);
   border: 1px solid var(--border);
 }
 
-/* Button with VISIBLE structure */
 .clean-btn {
-  background: #27272a;
-  /* Zinc 800 */
+  background-color: #27272a;
   border: 1px solid #3f3f46;
-  /* Zinc 700 */
   color: #e4e4e7;
-  /* Zinc 200 */
   transition: all 0.2s ease;
 }
 
 .clean-btn:hover {
-  background: #3f3f46;
-  /* Zinc 700 */
+  background-color: #3f3f46;
   border-color: #71717a;
-  /* Zinc 500 */
   color: white;
   transform: translateY(-1px);
 }
 
 .clean-btn-active {
-  background: var(--primary);
+  background-color: var(--primary);
   border-color: var(--primary);
   color: white;
   font-weight: 600;
   box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
-}
-
-.text-gradient {
-  background: linear-gradient(to right, #ffffff, #a1a1aa);
-  /* White to Zinc 400 */
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
 }
