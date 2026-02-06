@@ -42,7 +42,9 @@ Hackathon MVP.
 - **Portfolio (25%)**: Existence of a showcase link.
 
 ## 🎥 Demo
-[Insert Demo Video Here]
+
+https://github.com/user-attachments/assets/71b68524-abe2-4735-bd61-78ad8cb774eb
+
 
 ---
-Built for Hackathon 2026.
+Built for PrepPulse Hackathon 2026.
